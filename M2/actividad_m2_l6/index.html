@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad M2 L6</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body class="p-4">
+
+    <h2>Manipulación del DOM con jQuery</h2>
+
+    <!-- Botón -->
+    <button id="btnToggle" class="btn btn-primary btn-lg btn-dark mt-4 mb-2">Ocultar lista</button>
+    <br>
+    <!-- Lista requerida -->
+    <ul id="miLista" class="list-group">
+        <li class="list-group-item fw-bold">Elemento 1</li>
+        <li class="list-group-item fw-bold">Elemento 2</li>
+        <li class="list-group-item fw-bold">Elemento 3</li>
+    </ul>
+    <!-- Botón cambiar color -->
+    <button id="btnColor" class="btn btn-lg btn-dark btn-warning mt-2 mb-2">Cambiar color de la lista</button>
+    <hr>
+    <h3>Plugin jQuery + Bootstrap: Modal</h3>
+    <!-- Botón para abrir modal -->
+    <button class="btn btn-info btn-lg btn-dark mt-2 mb-2" data-toggle="modal" data-target="#miModal">
+        Abrir modal de ejemplo
+    </button>
+    <!-- Modal de Bootstrap -->
+    <div class="modal fade" id="miModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal con jQuery + Bootstrap</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Este es un ejemplo de plugin jQuery de Bootstrap.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-dark text-white text-center py-3 fixed-bottom">
+        © 2025 Marcelo Castillo
+    </footer>
+    <!-- Script jQuery -->
+    <script>
+        $(document).ready(function () {
+
+            // Colores que irán rotando
+            const colores = ["Gray", "DarkSlateGray", "RoyalBlue", "CadetBlue", "SteelBlue", "MediumBlue", "MidnightBlue", "Teal", "DarkGreen", "SlateBlue"];
+            let indiceColor = 0;
+
+            // Botón para cambiar color
+            $("#btnColor").click(function () {
+                // Obtener siguiente color
+                let nuevoColor = colores[indiceColor];
+
+                // Aplicarlo a todos los li
+                $("#miLista li").css("color", nuevoColor);
+
+                // Avanzar al siguiente color
+                indiceColor = (indiceColor + 1) % colores.length;
+            });
+
+            // Agregar dinámicamente un cuarto elemento
+            $("#miLista").append('<li class="list-group-item fw-bold">Elemento 4</li>');
+
+            // Evento del botón ocultar/mostrar
+            $("#btnToggle").click(function () {
+
+                if ($("#miLista").is(":visible")) {
+                    $("#miLista").hide();
+                    $(this).text("Mostrar lista");
+                } else {
+                    $("#miLista").show();
+                    $(this).text("Ocultar lista");
+                }
+
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
