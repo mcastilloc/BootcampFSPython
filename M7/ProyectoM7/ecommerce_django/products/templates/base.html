@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ecommerce</title>
+</head>
+
+<body>
+
+<h1>Administración de Productos</h1>
+
+<a href="/products/">Listado</a>
+<a href="/products/create/">Nuevo producto</a>
+
+<hr>
+
+{% if messages %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+</body>
+</html>

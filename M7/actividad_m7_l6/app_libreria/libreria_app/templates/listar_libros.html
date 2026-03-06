@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block contenido %}
+
+<h2>Lista de libros</h2>
+
+<ul>
+{% for libro in libros %}
+<li>
+{{ libro.titulo }} - {{ libro.autor }} ({{ libro.anio }})
+<a href="/libros/editar/{{ libro.id }}/">Editar</a>
+<a href="/libros/eliminar/{{ libro.id }}/">Eliminar</a>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -51,6 +51,18 @@ host    libreria        tu_usuario       127.0.0.1/32            md5
 
 reemplazar conexion sqlite por la de postgres`settings.py`
 ```python
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'libreria_app',
+]
+
+
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.postgresql',
@@ -86,8 +98,8 @@ TEMPLATES = [
 `models.py`
 ```python
 class Libro(models .Model) :
-	titulo = models.CharField(max_lenght=100)
-	autor = models.CharField(max_lenght=50)
+	titulo = models.CharField(max_length=100)
+	autor = models.CharField(max_length=50)
 	anio_publicacion = models.IntegerField()
 	disponible = models.BooleanField(default=True)
 ```
